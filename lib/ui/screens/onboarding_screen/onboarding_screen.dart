@@ -1,4 +1,4 @@
-import 'package:agroshield_flutter/ui/screens/home_screen.dart';
+import 'package:agroshield_flutter/ui/screens/base_nav_screen.dart';
 import 'package:agroshield_flutter/ui/utils/image_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -15,7 +15,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      MaterialPageRoute(builder: (_) => const BaseNavScreen()),
     );
   }
 
