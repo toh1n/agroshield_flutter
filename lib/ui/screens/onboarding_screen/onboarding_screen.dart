@@ -2,6 +2,7 @@ import 'package:agroshield_flutter/ui/screens/base_nav_screen.dart';
 import 'package:agroshield_flutter/ui/utils/image_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -13,28 +14,19 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const BaseNavScreen()),
-    );
+  Future<void> _onIntroEnd(context) async {
+    SharedPreferences sharedPrefs = await SharedPreferences.getInstance();
+    await sharedPrefs.setString('isOnboarding', 'true').then((value) => (
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const BaseNavScreen()),
+        )
+    ));
+
   }
 
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset(ImageManager.onboardingHelloPNG, width: width);
-  }
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
-
-    const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
-      bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Color(0xffafc1a7),
-      imagePadding: EdgeInsets.zero,
-    );
-
     return IntroductionScreen(
       key: introKey,
       globalBackgroundColor: const Color(0xffafc1a7),

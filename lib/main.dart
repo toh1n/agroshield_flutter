@@ -1,4 +1,4 @@
-import 'package:agroshield_flutter/ui/screens/onboarding_screen/onboarding_screen.dart';
+import 'package:agroshield_flutter/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class Agroshield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: OnboardingScreen(),
+      home: SplashScreen(),
     );
   }
 }
