@@ -1,3 +1,5 @@
+import 'package:agroshield_flutter/ui/screens/auth_screens/login_screen.dart';
+import 'package:agroshield_flutter/ui/screens/base_nav_screen.dart';
 import 'package:agroshield_flutter/ui/screens/home_screen.dart';
 import 'package:agroshield_flutter/ui/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           MaterialPageRoute(builder: (context) =>
           isOnboarding
-              ? const OnboardingScreen()
-              : const HomeScreen()),
+              ? const LoginScreen()
+              : const OnboardingScreen()),
               (route) => false,
         );
       }
@@ -40,7 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("AgroShield"),
+        child: Text(
+          "AgroShield",
+          style: TextStyle(
+            color: Colors.green,
+            fontSize: 30,
+            fontWeight: FontWeight.bold
+          ),
+        ),
       ),
     );
   }
